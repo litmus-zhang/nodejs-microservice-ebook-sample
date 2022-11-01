@@ -3,7 +3,7 @@ var seneca = require("seneca")();
 
 var server = http.createServer(function (req, res) {
   res.writeHead(200, { "Content-Type": "text/plain" });
-  res.end("Hello World");
+  res.end("Hello World of the Flies\n");
 });
 
 // seneca.add({role: 'math', cmd: 'sum'}, function (msg, respond) {
@@ -38,21 +38,21 @@ var server = http.createServer(function (req, res) {
 //   console.log(result.message);
 // });
 
-seneca.add({cmd: "wordcount"}, (msg, respond)=>{
-    var length = msg.phrase.split(" ").length;
-    respond(null, {words: length});
-})
+// seneca.add({cmd: "wordcount"}, (msg, respond)=>{
+//     var length = msg.phrase.split(" ").length;
+//     respond(null, {words: length});
+// })
 
-seneca.add({cmd: "wordcount", skipShort: true}, (msg, respond)=>{
-    var length = msg.phrase.split(" ").filter((word)=>word.length > 3).length;
-    respond(null, {words: length});
-})
+// seneca.add({cmd: "wordcount", skipShort: true}, (msg, respond)=>{
+//     var length = msg.phrase.split(" ").filter((word)=>word.length > 3).length;
+//     respond(null, {words: length});
+// })
 
 
-seneca.act({cmd: "wordcount",skipShort: true ,phrase: "Hello World This is a seneca"}, (err, result)=>{
-    if(err) return console.log(err);
-    console.log(result.words);
-})
+// seneca.act({cmd: "wordcount",skipShort: true ,phrase: "Hello World This is a seneca"}, (err, result)=>{
+//     if(err) return console.log(err);
+//     console.log(result.words);
+// })
 
 server.listen(8000, function () {
   console.log("Server listening on port 3000");
